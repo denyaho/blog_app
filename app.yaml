@@ -1,0 +1,28 @@
+runtime: python312
+
+instance_class: F1
+env: standard
+service: default
+
+entrypoint: gunicorn -b :$PORT config.wsgi:application
+
+#includes:
+#- secrets/secret.yaml
+
+env_variables:
+  DB_NAME: "really_site_test_db"
+  DB_USERNAME: "daidaidai"
+  DB_USERPASS: "daiadmin123"
+  DB_CONNECTION: "blog-site-reallysite:us-central1:really-site-test-instance"
+  GRECAPTCHA_SITEKEY: "6LeOLncqAAAAAG6eH2-fWEA4_SQNbSe4Rt0-cwBm"
+  GRECAPTCHA_SECRETKEY: "6LeOLncqAAAAAFa-5y1iPGLchA5hBdB9fm_5Kd2E"
+  # GRECAPTHCA_SITEKEY: "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
+  # GRECAPTHCA_SECRETKEY: "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe"
+
+handlers:
+  - url: /static
+    static_dir: staticfiles/
+
+  - url: /.*
+    secure: always
+    script: auto

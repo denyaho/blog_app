@@ -1,0 +1,40 @@
+{% extends "mysite/base.html" %} <!--baase.htmlを呼び出す-->
+
+
+{% block content %}
+
+<!--classはdivタグにつける名前。コードをグループ化できるメリットがある。
+classはCSSの設定を適用するために使用される-->
+
+
+<main class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h3 class="font-italic border-bottom display-4">
+                {{ article.title }}
+            </h3>
+            <div class="my-4">
+                <p>{{ article.test }}</p>
+                <p class="small text-muted text-right">{{ article.created_at}} {{article.author}}</p>    
+            </div>
+
+            <div>
+                {% include 'mysite/snippets/like_count.html' %}
+                {% include 'mysite/snippets/tag.html' %}    
+            </div>
+
+            <br> 
+            {% include "mysite/snippets/comment.html" %}
+            <!-- <nav class="blog-pagination">
+                <a class="btn btn-outline-primary" href="#">old paper</a>
+                <a class="btn btn-outline-secondary" href="#">new paper</a>
+            </nav> -->
+        </div>
+        {% include 'mysite/snippets/sidebar.html' %}
+    </div>
+</main>
+
+
+
+
+{% endblock %}

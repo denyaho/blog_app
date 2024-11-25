@@ -1,0 +1,7 @@
+<form method="POST" class="d-inline">
+    {% csrf_token %}
+    <input type="hidden" name="like_count" value="true">
+    <button class="btn btn-sm btn-outline-success" type="submit"> {{ article.count }}いいね！</button>
+    <span class="badge bg-light text-dark">{{ like_count }}</span>
+
+</form>
