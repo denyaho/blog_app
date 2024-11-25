@@ -1,2 +1,0 @@
-user: daiogawa@cisco.com 
- password: daiadmin123
